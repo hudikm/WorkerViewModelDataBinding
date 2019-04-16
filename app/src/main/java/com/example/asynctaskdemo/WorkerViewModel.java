@@ -1,12 +1,12 @@
 package com.example.asynctaskdemo;
 
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
-
 import android.os.AsyncTask;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 public class WorkerViewModel extends ViewModel {
     private List<TemperatureData> data = new ArrayList<>();
@@ -30,14 +30,13 @@ public class WorkerViewModel extends ViewModel {
     }
 
     public class AsyncTaskWorker extends AsyncTask<Void, TemperatureData, Void> {
-
         @Override
         protected Void doInBackground(Void... voids) {
             int i = 0;
             while (true) {
                 try {
-                    publishProgress(new TemperatureData("Skuska", (float) i++));
-                    Thread.sleep(5000);
+                    publishProgress(new TemperatureData(TemperatureData.getRandomLocation(), (float) TemperatureData.getRandomNumberInRange(-50, 50)));
+                    Thread.sleep(1000);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

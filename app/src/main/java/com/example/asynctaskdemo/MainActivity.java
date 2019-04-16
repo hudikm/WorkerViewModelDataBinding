@@ -1,16 +1,15 @@
 package com.example.asynctaskdemo;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         final MyRecyclerViewAdapter myRecyclerViewAdapter = new MyRecyclerViewAdapter();
 
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(myRecyclerViewAdapter);
 
         // Najdenie instancie workViewModel triedy
